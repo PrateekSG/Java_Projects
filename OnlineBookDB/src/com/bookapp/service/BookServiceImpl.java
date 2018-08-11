@@ -33,18 +33,24 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public Book getBookById(int bookid) throws BookNotFoundException {
 		// TODO Auto-generated method stub
-		return null;
+		Book book=bookDAO.getBookById(bookid);
+		
+		if(book==null)
+			throw new BookNotFoundException("Book Not Found!!!");
+		
+		return book;
 	}
 
 	@Override
-	public boolean updateBook(int bookid, int price) {
-		// TODO Auto-generated method stub
+	public boolean updateBook(int bookid, int price) throws BookNotFoundException {
+		if(!bookDAO.updateBook(bookid,price))
+			throw new BookNotFoundException();
 		return false;
 	}
 
 	@Override
 	public List<Book> getAllBooks() {
-		// TODO Auto-generated method stub
+	
 		List<Book> booklist=bookDAO.getAllBooks()
 				.stream()
 				.sorted((book1,book2)->{
@@ -57,14 +63,26 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<Book> getBookbyAuthor(String author) throws AuthorNotFoundException{
-		// TODO Auto-generated method stub
-		return null;
+		List<Book> booklist=bookDAO.getBookbyAuthor(author)
+				.stream()
+				.sorted((book1,book2)->{
+					return book1.getTitle().compareTo(book2.getTitle());
+				})
+				.collect(Collectors.toList());
+		
+		return booklist;
 	}
 
 	@Override
 	public List<Book> getBookbycategory(String category) throws CategoryNotFoundException{
-		// TODO Auto-generated method stub
-		return null;
+		List<Book> booklist=bookDAO.getBookbycategory(category)
+				.stream()
+				.sorted((book1,book2)->{
+					return book1.getTitle().compareTo(book2.getTitle());
+				})
+				.collect(Collectors.toList());
+		
+		return booklist;
 	}
 
 

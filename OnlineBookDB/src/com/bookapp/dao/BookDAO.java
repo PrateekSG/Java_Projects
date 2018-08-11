@@ -13,7 +13,7 @@ public interface BookDAO {
 		void addBook(Book book);
 		boolean deleteBook(int bookid) throws BookNotFoundException;
 		Book getBookById(int bookid) throws BookNotFoundException;
-		boolean updateBook(int bookid,int price);
+		boolean updateBook(int bookid,int price) throws BookNotFoundException;
 		
 		// called by customer
 		List<Book> getAllBooks();
