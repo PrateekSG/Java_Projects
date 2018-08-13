@@ -46,11 +46,11 @@ public class Book {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 	@Override
 	public String toString() {
-		return title + "\t\t" + author + "\t\t" + category + "\t\t" + bookid
-				+ "\t\t" + price ;
+		return "Book [title=" + title + ", author=" + author + ", category=" + category + ", bookid=" + bookid
+				+ ", price=" + price + "]";
 	}
-	
 
 }

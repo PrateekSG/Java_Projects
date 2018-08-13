@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 import com.bookapp.bean.Book;
@@ -42,7 +42,6 @@ public class BookDAOImpl implements BookDAO{
 			PreparedStatement statement = connection.prepareStatement(sql);){
 			statement.setInt(1,bookid);
 			int value=statement.executeUpdate();
-					
 			if(value==0)
 				flag=false;
 			
