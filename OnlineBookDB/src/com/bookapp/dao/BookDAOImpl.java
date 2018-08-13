@@ -62,8 +62,10 @@ public class BookDAOImpl implements BookDAO{
 			PreparedStatement statement = connection.prepareStatement(sql);){
 			statement.setInt(1,bookid);
 			ResultSet resultset=statement.executeQuery();
+			if(!resultset.next())
+				throw new BookNotFoundException("Book Not Availaible!!!");
 			book=new Book(resultset.getString(1),resultset.getString(2),resultset.getString(3),resultset.getInt(4),resultset.getInt(5));
-			
+			//System.out.println(book);
 		}catch(SQLException e) {
 			System.out.println(e);
 		}

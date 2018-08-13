@@ -26,25 +26,20 @@ public class BookServiceImpl implements BookService{
 	public boolean deleteBook(int bookid) throws BookNotFoundException {
 		// TODO Auto-generated method stub
 		if(!bookDAO.deleteBook(bookid))
-			throw new BookNotFoundException();
+			throw new BookNotFoundException("Book not Availaible!!!");
 		return false;
 	}
 
 	@Override
 	public Book getBookById(int bookid) throws BookNotFoundException {
 		// TODO Auto-generated method stub
-		Book book=bookDAO.getBookById(bookid);
-		
-		if(book==null)
-			throw new BookNotFoundException("Book Not Found!!!");
-		
-		return book;
+		return bookDAO.getBookById(bookid);		
 	}
 
 	@Override
 	public boolean updateBook(int bookid, int price) throws BookNotFoundException {
 		if(!bookDAO.updateBook(bookid,price))
-			throw new BookNotFoundException();
+			throw new BookNotFoundException("Book not Availaible!!!");
 		return false;
 	}
 
